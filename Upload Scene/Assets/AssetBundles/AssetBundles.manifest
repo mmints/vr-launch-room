@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3084872655
+CRC: 3488375072
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: scenes
+      Name: dummy
       Dependencies: {}

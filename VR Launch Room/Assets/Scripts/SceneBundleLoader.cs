@@ -10,7 +10,8 @@ public class SceneBundleLoader : MonoBehaviour
         // Download compressed Scene. If version 5 of the file named "Streamed-Level1.unity3d" was previously downloaded and cached.
         // Then Unity will completely skip the download and load the decompressed Scene directly from disk.
         
-        var download = UnityWebRequestAssetBundle.GetAssetBundle("http://141.26.178.164:666/Streamed-level.unity3d");
+        // var download = UnityWebRequestAssetBundle.GetAssetBundle("http://141.26.178.164:666/Streamed-level.unity3d");
+        var download = UnityWebRequestAssetBundle.GetAssetBundle("http://141.26.140.219:666/Streamed-level.unity3d");
         // var download = UnityWebRequestAssetBundle.GetAssetBundle("http://141.26.178.164:666/scenes");
 
         // Both variations works!
