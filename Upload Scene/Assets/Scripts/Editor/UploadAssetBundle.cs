@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using System.IO;
 
 namespace Editor
 {
@@ -8,6 +9,7 @@ namespace Editor
         public string[] options;
         public int index = 0;
         public string myString = "Not Selected by Now";
+        string assetBundleDirectory = "Assets/AssetBundles";
         
         void OnEnable()
         {
@@ -30,8 +32,16 @@ namespace Editor
             {
                 myString = GetPathToScene(index);
             }
-            
             myString = EditorGUILayout.TextField ("Path to Scene", myString);
+
+            if (GUILayout.Button("Build Scene"))
+            {
+                if(!Directory.Exists(assetBundleDirectory))
+                {
+                    Directory.CreateDirectory(assetBundleDirectory);
+                }
+                BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows);
+            }
         }
         
         string GetPathToScene(int selectedAssetBundle)
