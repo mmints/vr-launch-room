@@ -32,15 +32,18 @@ namespace Editor
             }
             
             myString = EditorGUILayout.TextField ("Path to Scene", myString);
-
         }
         
         string GetPathToScene(int selectedAssetBundle)
         {
             string[] paths = AssetDatabase.GetAssetPathsFromAssetBundle(options[index]);
-            if (paths[0] == null)
+            if (paths.Length == 0)
+            {
                 return "Scene is not linked to selected asset bundle";
-            return paths[0];
+            }
+            else {
+                return paths[0];
+            }
         }
     }
 }

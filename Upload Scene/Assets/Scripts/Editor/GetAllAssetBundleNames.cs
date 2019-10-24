@@ -16,8 +16,15 @@ namespace Editor
         [MenuItem("Build/Get Path to Assets from asset bundle")]
         static void GetPath()
         {
-            var names = AssetDatabase.GetAssetPathsFromAssetBundle("dummy");
-            Debug.Log("Path to asset bundle 'dummy': " + names[0]);
+            var names = AssetDatabase.GetAssetPathsFromAssetBundle("test0");
+            if (names.Length == 0)
+            {
+                Debug.Log("There is no name");
+            }
+            else
+            {
+                Debug.Log("Path to asset bundle 'dummy': " + names[0]);
+            }
         }
     }
 }
