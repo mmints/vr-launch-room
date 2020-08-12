@@ -1,10 +1,26 @@
 {
-   "action_manifest_version" : 0,
-   "alias_info" : {},
-   "app_key" : "application.generated.unity.vrlaunchroom.exe",
+   
    "bindings" : {
       "/actions/buggy" : {
          "sources" : [
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/buggy/in/steering"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/buggy/in/steering"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
+            },
             {
                "inputs" : {
                   "pull" : {
@@ -27,25 +43,19 @@
                "inputs" : {
                   "click" : {
                      "output" : "/actions/buggy/in/brake"
-                  },
-                  "position" : {
-                     "output" : "/actions/buggy/in/steering"
                   }
                },
-               "mode" : "trackpad",
-               "path" : "/user/hand/left/input/trackpad"
+               "mode" : "button",
+               "path" : "/user/hand/left/input/a"
             },
             {
                "inputs" : {
                   "click" : {
                      "output" : "/actions/buggy/in/brake"
-                  },
-                  "position" : {
-                     "output" : "/actions/buggy/in/steering"
                   }
                },
-               "mode" : "trackpad",
-               "path" : "/user/hand/right/input/trackpad"
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
             },
             {
                "inputs" : {
@@ -54,7 +64,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/application_menu"
+               "path" : "/user/hand/left/input/b"
             },
             {
                "inputs" : {
@@ -63,7 +73,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/application_menu"
+               "path" : "/user/hand/right/input/b"
             }
          ]
       },
@@ -111,40 +121,30 @@
             },
             {
                "inputs" : {
+                  "force" : {
+                     "output" : "/actions/default/in/squeeze"
+                  }
+               },
+               "mode" : "force_sensor",
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "force" : {
+                     "output" : "/actions/default/in/squeeze"
+                  }
+               },
+               "mode" : "force_sensor",
+               "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
                   "click" : {
                      "output" : "/actions/default/in/teleport"
                   }
                },
                "mode" : "button",
                "path" : "/user/hand/left/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/grabgrip"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.05",
-                  "click_deactivate_threshold" : "0",
-                  "force_input" : "force"
-               },
-               "path" : "/user/hand/left/input/grip"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/grabpinch"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.75",
-                  "click_deactivate_threshold" : "0.7",
-                  "force_input" : "value"
-               },
-               "path" : "/user/hand/left/input/trigger"
             },
             {
                "inputs" : {
@@ -158,19 +158,6 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabpinch"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.75",
-                  "click_deactivate_threshold" : "0.7"
-               },
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
                      "output" : "/actions/default/in/teleport"
                   }
                },
@@ -179,57 +166,55 @@
             },
             {
                "inputs" : {
-                  "click" : {
+                  "grab" : {
                      "output" : "/actions/default/in/grabgrip"
                   }
                },
-               "mode" : "button",
+               "mode" : "grab",
                "parameters" : {
-                  "click_activate_threshold" : "0.05",
-                  "click_deactivate_threshold" : "0",
-                  "force_input" : "force"
+                  "force_hold_threshold" : "0.02",
+                  "force_release_threshold" : "0.01"
+               },
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "grab" : {
+                     "output" : "/actions/default/in/grabgrip"
+                  }
+               },
+               "mode" : "grab",
+               "parameters" : {
+                  "force_hold_threshold" : "0.02",
+                  "force_release_threshold" : "0.01"
                },
                "path" : "/user/hand/right/input/grip"
             },
             {
                "inputs" : {
-                  "pull" : {
-                     "output" : "/actions/default/in/squeeze"
+                  "grab" : {
+                     "output" : "/actions/default/in/grabpinch"
                   }
                },
-               "mode" : "trigger",
-               "path" : "/user/hand/left/input/trigger"
+               "mode" : "grab",
+               "parameters" : {
+                  "force_hold_threshold" : "0.02",
+                  "force_release_threshold" : "0.01"
+               },
+               "path" : "/user/hand/left/input/pinch"
             },
             {
                "inputs" : {
-                  "pull" : {
-                     "output" : "/actions/default/in/squeeze"
+                  "grab" : {
+                     "output" : "/actions/default/in/grabpinch"
                   }
                },
-               "mode" : "trigger",
-               "path" : "/user/hand/right/input/trigger"
-            }
-         ]
-      },
-      "/actions/digilab4u" : {
-         "sources" : [
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/digilab4u/in/openmenu"
-                  }
+               "mode" : "grab",
+               "parameters" : {
+                  "force_hold_threshold" : "0.02",
+                  "force_release_threshold" : "0.01"
                },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/application_menu"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/digilab4u/in/openmenu"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/application_menu"
+               "path" : "/user/hand/right/input/pinch"
             }
          ]
       },
@@ -237,21 +222,12 @@
          "sources" : [
             {
                "inputs" : {
-                  "click" : {
-                     "output" : "/actions/platformer/in/jump"
+                  "position" : {
+                     "output" : "/actions/platformer/in/move"
                   }
                },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/platformer/in/jump"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trackpad"
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/thumbstick"
             },
             {
                "inputs" : {
@@ -259,25 +235,31 @@
                      "output" : "/actions/platformer/in/move"
                   }
                },
-               "mode" : "trackpad",
-               "path" : "/user/hand/left/input/trackpad"
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
             },
             {
                "inputs" : {
-                  "position" : {
-                     "output" : "/actions/platformer/in/move"
+                  "click" : {
+                     "output" : "/actions/platformer/in/jump"
                   }
                },
-               "mode" : "trackpad",
-               "path" : "/user/hand/right/input/trackpad"
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/platformer/in/jump"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
             }
          ]
       }
    },
-   "category" : "steamvr_input",
-   "controller_type" : "vive_controller",
+   "controller_type" : "knuckles",
    "description" : "",
-   "name" : "vive_controller_digilab4u",
-   "options" : {},
-   "simulated_actions" : []
+   "name" : "knuckles_default"
 }
