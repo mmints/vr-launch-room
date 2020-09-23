@@ -122,6 +122,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &34175188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5197851778846849268, guid: 8e6bce54b37336742bc9d42ce59543be,
+    type: 3}
+  m_PrefabInstance: {fileID: 5197851778233101022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &523525307
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +473,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1631689950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5197851779161036635, guid: 8e6bce54b37336742bc9d42ce59543be,
+    type: 3}
+  m_PrefabInstance: {fileID: 5197851778233101022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5197851778233101022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,6 +486,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5197851778126511856, guid: 8e6bce54b37336742bc9d42ce59543be,
+        type: 3}
+      propertyPath: playerLeftHandMenu
+      value: 
+      objectReference: {fileID: 1631689950}
+    - target: {fileID: 5197851778126511856, guid: 8e6bce54b37336742bc9d42ce59543be,
+        type: 3}
+      propertyPath: playerRightHand
+      value: 
+      objectReference: {fileID: 34175188}
+    - target: {fileID: 5197851778846849264, guid: 8e6bce54b37336742bc9d42ce59543be,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197851779161036635, guid: 8e6bce54b37336742bc9d42ce59543be,
+        type: 3}
+      propertyPath: m_Name
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197851779161036635, guid: 8e6bce54b37336742bc9d42ce59543be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5197851779751735503, guid: 8e6bce54b37336742bc9d42ce59543be,
         type: 3}
       propertyPath: m_LocalPosition.x
