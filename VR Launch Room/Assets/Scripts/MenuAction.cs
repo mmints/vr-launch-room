@@ -12,7 +12,7 @@ public class MenuAction : MonoBehaviour
     public string launchRoom; // Scene name of the launch room
 
     // a reference to the action
-    public SteamVR_Action_Boolean openMenu; //Currently just used to get back to the Launch Room
+    public SteamVR_Action_Boolean openMenu;
     public SteamVR_Input_Sources handType;
     
     // TODO: Exchange SceneManager.LoadScene by SteamVR_LoadLevel
