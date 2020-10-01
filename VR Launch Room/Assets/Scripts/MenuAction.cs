@@ -6,17 +6,15 @@ using UnityEngine.SceneManagement;
 using Valve.VR;
 using Valve.VR.Extras;
 
-// This script controls the behavior of the MENU button on the VIVE Controller
+/*
+ * This script controls the behavior of the MENU button on the VIVE Controller 
+ */
+
 public class MenuAction : MonoBehaviour
 {
-    public string launchRoom; // Scene name of the launch room
-
     // a reference to the action
     public SteamVR_Action_Boolean openMenu;
     public SteamVR_Input_Sources handType;
-    
-    // TODO: Exchange SceneManager.LoadScene by SteamVR_LoadLevel
-    private SteamVR_LoadLevel steamVrLoadLevel; // Currently not in use
     
     // Implementation for connecting menu (Player LeftHand) and LaserPointer (Player RightHand)
     // to the MenuButton Action
@@ -45,17 +43,5 @@ public class MenuAction : MonoBehaviour
             instanceOfPlayerLaserPointer.enabled = true;
         else
             instanceOfPlayerLaserPointer.enabled = false;
-    }
-
-    private void Update()
-    {
-        // Use for debugging and quick switching to the launchRoom by keyboard
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            Debug.Log("Return to Launch Room!");
-            
-            // TODO: Exchange SceneManager.LoadScene by SteamVR_LoadLevel
-            SceneManager.LoadScene(launchRoom);
-        }
     }
 }
