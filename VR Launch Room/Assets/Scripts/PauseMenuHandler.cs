@@ -9,18 +9,39 @@ using UnityEngine;
 
 public class PauseMenuHandler : MonoBehaviour
 {
-    public Transform pauseMenuPosition; // Place pause menu at this position
-    public GameObject pauseMenu;
+    public Transform cameraTransform;
+    public GameObject pauseMenuUI;
     
-    private bool menuIsOpen = false; // Indicates if the menu is currently open or not
+    public static bool gameIsPaused = false; // Indicates if the menu is currently open or not
     
     void Update()
     {
         // Use keyboard input for quick debugging
-        if (Input.GetKeyUp(KeyCode.Space) && !menuIsOpen)
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            Instantiate(pauseMenu, pauseMenuPosition.position, pauseMenuPosition.rotation);
-            menuIsOpen = true;
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
+    }
+
+    void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        gameIsPaused = false;
+    }
+
+    // Opens a pause menu at a fixed position in the world relatively to the head/camera position
+    void Pause()
+    {
+        pauseMenuUI.transform.rotation = cameraTransform.rotation;
+        pauseMenuUI.transform.position = cameraTransform.position + (cameraTransform.forward * 3f);
+        pauseMenuUI.SetActive(true);
+        gameIsPaused = true;
     }
 }
