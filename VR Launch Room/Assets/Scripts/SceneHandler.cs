@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Valve.VR;
 using Valve.VR.Extras;
 
 /*
@@ -13,48 +14,29 @@ using Valve.VR.Extras;
 public class SceneHandler : MonoBehaviour
 {
     public SteamVR_LaserPointer laserPointer;
-    public GameObject placeHolder;
-
+    public GameObject placeHolderMain;
+    public GameObject placeHolderScene2;
+    
+    private string main = "Main";
+    private string scene2 = "Scene2";
+    
     void Awake()
     {
-        laserPointer.PointerIn += PointerInside;
-        laserPointer.PointerOut += PointerOutside;
         laserPointer.PointerClick += PointerClick;
     }
 
+    // Use the laserPointer and the Trigger of the controller to enable the transition
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Cube")
+        if (e.target.name == main)
         {
-            Debug.Log("Cube was clicked");
-        } else if (e.target.name == "Button")
-        {
-            placeHolder.SetActive(true);
-            Debug.Log("Button was clicked");
+            placeHolderMain.SetActive(true);
+            Debug.Log("Reset was clicked");
         }
-    }
-
-    public void PointerInside(object sender, PointerEventArgs e)
-    {
-        if (e.target.name == "Cube")
+        else if (e.target.name == scene2)
         {
-            Debug.Log("Cube was entered");
-        }
-        else if (e.target.name == "Button")
-        {
-            Debug.Log("Button was entered");
-        }
-    }
-
-    public void PointerOutside(object sender, PointerEventArgs e)
-    {
-        if (e.target.name == "Cube")
-        {
-            Debug.Log("Cube was exited");
-        }
-        else if (e.target.name == "Button")
-        {
-            Debug.Log("Button was exited");
+            placeHolderScene2.SetActive(true);
+            Debug.Log("Next was clicked");
         }
     }
 }
