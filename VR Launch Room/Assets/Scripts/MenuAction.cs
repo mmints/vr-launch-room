@@ -1,4 +1,8 @@
-﻿using System;
+﻿// DEPRECATED //
+
+// Clean up when done with developing of DL4U_Player and all needed scripts
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +11,7 @@ using Valve.VR;
 using Valve.VR.Extras;
 
 /*
+ * DEPRECATED
  * This script controls the behavior of the MENU button on the VIVE Controller 
  */
 
