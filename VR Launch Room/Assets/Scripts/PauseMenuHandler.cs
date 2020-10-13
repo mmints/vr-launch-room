@@ -20,7 +20,8 @@ public class PauseMenuHandler : MonoBehaviour
     public Transform cameraTransform;
     public GameObject pauseMenuUI; // Game object, that contains a canvas with the GUI elements
 
-    public GameObject laserPointer; // Game object that contains the component: SteamVR Laser Pointer (Script)
+    // TODO: Implement the appearance and disappearance of the laser pointer
+    // public GameObject laserPointer; // Game object that contains the component: SteamVR Laser Pointer (Script)
     
     public static bool gameIsPaused = false; // Indicates if the menu is currently open or not
 
@@ -62,7 +63,7 @@ public class PauseMenuHandler : MonoBehaviour
     void Resume()
     {
         pauseMenuUI.SetActive(false);
-        laserPointer.SetActive(false);
+        //laserPointer.SetActive(false);
         gameIsPaused = false;
     }
 
@@ -79,7 +80,7 @@ public class PauseMenuHandler : MonoBehaviour
         pauseMenuUI.transform.position = position;
         
         pauseMenuUI.SetActive(true);
-        laserPointer.SetActive(true);
+        //laserPointer.SetActive(true);
         gameIsPaused = true;
     }
 }
