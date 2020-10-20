@@ -1,3 +1,7 @@
+// DEPRECATED //
+
+// Clean up when done with developing of DL4U_Player and all needed scripts
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +11,8 @@ using Valve.VR;
 using Valve.VR.Extras;
 
 /*
+ * DEPRECATED
+ * 
  * This is a very simplified script. It checks hardcoded game object names.
  * It is currently only used for testing purposes.
  */
