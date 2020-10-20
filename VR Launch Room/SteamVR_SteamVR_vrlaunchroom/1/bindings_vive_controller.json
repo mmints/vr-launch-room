@@ -1,5 +1,7 @@
 {
-   "app_key" : "application.generated.unity.steamvr.exe",
+   "action_manifest_version" : 0,
+   "alias_info" : {},
+   
    "bindings" : {
       "/actions/buggy" : {
          "sources" : [
@@ -23,39 +25,27 @@
             },
             {
                "inputs" : {
+                  "click" : {
+                     "output" : "/actions/buggy/in/brake"
+                  },
                   "position" : {
                      "output" : "/actions/buggy/in/steering"
                   }
                },
-               "mode" : "joystick",
-               "path" : "/user/hand/left/input/joystick"
+               "mode" : "trackpad",
+               "path" : "/user/hand/left/input/trackpad"
             },
             {
                "inputs" : {
+                  "click" : {
+                     "output" : "/actions/buggy/in/brake"
+                  },
                   "position" : {
                      "output" : "/actions/buggy/in/steering"
                   }
                },
-               "mode" : "joystick",
-               "path" : "/user/hand/right/input/joystick"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/buggy/in/brake"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/buggy/in/brake"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/x"
+               "mode" : "trackpad",
+               "path" : "/user/hand/right/input/trackpad"
             },
             {
                "inputs" : {
@@ -64,7 +54,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/y"
+               "path" : "/user/hand/left/input/application_menu"
             },
             {
                "inputs" : {
@@ -73,25 +63,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/buggy/in/brake"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/a"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/buggy/in/reset"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/b"
+               "path" : "/user/hand/right/input/application_menu"
             }
          ]
       },
@@ -144,7 +116,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/joystick"
+               "path" : "/user/hand/left/input/trackpad"
             },
             {
                "inputs" : {
@@ -154,8 +126,8 @@
                },
                "mode" : "button",
                "parameters" : {
-                  "click_activate_threshold" : "0.8",
-                  "click_deactivate_threshold" : "0.7",
+                  "click_activate_threshold" : "0.05",
+                  "click_deactivate_threshold" : "0",
                   "force_input" : "force"
                },
                "path" : "/user/hand/left/input/grip"
@@ -168,7 +140,7 @@
                },
                "mode" : "button",
                "parameters" : {
-                  "click_activate_threshold" : "0.8",
+                  "click_activate_threshold" : "0.75",
                   "click_deactivate_threshold" : "0.7",
                   "force_input" : "value"
                },
@@ -191,7 +163,7 @@
                },
                "mode" : "button",
                "parameters" : {
-                  "click_activate_threshold" : "0.8",
+                  "click_activate_threshold" : "0.75",
                   "click_deactivate_threshold" : "0.7"
                },
                "path" : "/user/hand/right/input/trigger"
@@ -203,7 +175,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/joystick"
+               "path" : "/user/hand/right/input/trackpad"
             },
             {
                "inputs" : {
@@ -213,8 +185,8 @@
                },
                "mode" : "button",
                "parameters" : {
-                  "click_activate_threshold" : "0.8",
-                  "click_deactivate_threshold" : "0.7",
+                  "click_activate_threshold" : "0.05",
+                  "click_deactivate_threshold" : "0",
                   "force_input" : "force"
                },
                "path" : "/user/hand/right/input/grip"
@@ -226,7 +198,7 @@
                   }
                },
                "mode" : "trigger",
-               "path" : "/user/hand/left/input/grip"
+               "path" : "/user/hand/left/input/trigger"
             },
             {
                "inputs" : {
@@ -235,7 +207,7 @@
                   }
                },
                "mode" : "trigger",
-               "path" : "/user/hand/right/input/grip"
+               "path" : "/user/hand/right/input/trigger"
             }
          ]
       },
@@ -245,30 +217,45 @@
                "inputs" : {
                   "click" : {
                      "output" : "/actions/platformer/in/jump"
-                  },
-                  "position" : {
-                     "output" : "/actions/platformer/in/move"
                   }
                },
-               "mode" : "joystick",
-               "path" : "/user/hand/left/input/joystick"
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trackpad"
             },
             {
                "inputs" : {
                   "click" : {
                      "output" : "/actions/platformer/in/jump"
-                  },
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trackpad"
+            },
+            {
+               "inputs" : {
                   "position" : {
                      "output" : "/actions/platformer/in/move"
                   }
                },
-               "mode" : "joystick",
-               "path" : "/user/hand/right/input/joystick"
+               "mode" : "trackpad",
+               "path" : "/user/hand/left/input/trackpad"
+            },
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/platformer/in/move"
+                  }
+               },
+               "mode" : "trackpad",
+               "path" : "/user/hand/right/input/trackpad"
             }
          ]
       }
    },
-   "controller_type" : "oculus_touch",
+   "category" : "steamvr_input",
+   "controller_type" : "vive_controller",
    "description" : "",
-   "name" : "oculus_touch"
+   "name" : "vive_controller",
+   "options" : {},
+   "simulated_actions" : []
 }
