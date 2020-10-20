@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Valve.VR;
+using Valve.VR.Extras;
 
 /*
  * This script adapts the scene loading functionality from SteamVR_LoadLevel.cs (SteamVR 2.0).
@@ -12,15 +15,15 @@ using UnityEngine;
 
 public class SceneLoaderVR : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private SteamVR_LoadLevel steamVRLoadLevel;
     void Start()
     {
-        
+        EventSystem.current.loadLevel += this.LoadLevel;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LoadLevel(string levelName)
     {
-        
+        Debug.Log("SceneLoaderVR: Load Level:" + levelName);
+        SteamVR_LoadLevel.Begin(levelName, showGrid:true);
     }
 }

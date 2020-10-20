@@ -35,7 +35,7 @@ public class PauseMenuHandler : MonoBehaviour
     void Awake()
     {
         openMenu.AddOnStateDownListener(OnMenuButton, handType);
-        laserPointer.PointerClick += PointerClick;
+        laserPointer.PointerClick += PointerClick; // Add PointerClick to Laser Pointer Action
     }
     
     void Update()
@@ -69,9 +69,15 @@ public class PauseMenuHandler : MonoBehaviour
     public void PointerClick(object sender, PointerEventArgs e)
     {
         if (e.target.name == scene1)
+        {
             Debug.Log("Scene1 was clicked");
+            EventSystem.current.LoadLevel(scene1);
+        }
         else if (e.target.name == scene2)
+        {
             Debug.Log("Scene2 was clicked");
+            EventSystem.current.LoadLevel(scene2);
+        }
     }
     
     // Opens a pause menu at a fixed position in the world relatively to the head/camera position
