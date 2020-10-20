@@ -629,7 +629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340606496654125990
 Transform:
   m_ObjectHideFlags: 0
@@ -679,6 +679,7 @@ MonoBehaviour:
     actionPath: /actions/DigiLab4U/in/OpenMenu
     needsReinit: 0
   handType: 0
+  laserPointer: {fileID: 5788628950317244216}
   cameraTransform: {fileID: 6379891324771478814}
   pauseMenuUI: {fileID: 6078475561678544175}
 --- !u!114 &5788628950317244216
