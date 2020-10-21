@@ -1575,8 +1575,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1805448248033424776}
   - component: {fileID: 1805448248040232068}
-  - component: {fileID: 779955284505573321}
-  - component: {fileID: 3363120339004295021}
   m_Layer: 0
   m_Name: DL4U_Player
   m_TagString: Untagged
@@ -1635,43 +1633,6 @@ MonoBehaviour:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 0
   allowToggleTo2D: 1
---- !u!114 &779955284505573321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805448248033625584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27991c206a5e66147bb8ee3ef31c8bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionSet:
-    actionSetPath: /actions/DigiLab4U
-  forSources: 0
-  disableAllOtherActionSets: 0
-  activateOnStart: 1
-  deactivateOnDestroy: 1
---- !u!114 &3363120339004295021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805448248033625584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee6d53f8a3df5c45855859321208b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openMenu:
-    actionPath: /actions/DigiLab4U/in/OpenMenu
-    needsReinit: 0
-  handType: 0
-  laserPointer: {fileID: 8954367655918894744}
-  cameraTransform: {fileID: 1805448248033439128}
-  pauseMenuUI: {fileID: 8256722625115783738}
 --- !u!1 &1805448248033626680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3569,6 +3530,8 @@ GameObject:
   - component: {fileID: 5267477894604095539}
   - component: {fileID: 2342195411073627623}
   - component: {fileID: 4332694434083547740}
+  - component: {fileID: 4020828887139840141}
+  - component: {fileID: 8419824801223171222}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -3653,6 +3616,43 @@ MonoBehaviour:
   loadingScreenFadeInTime: 1
   loadingScreenFadeOutTime: 0.25
   autoTriggerOnEnable: 0
+--- !u!114 &4020828887139840141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326008480132225643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27991c206a5e66147bb8ee3ef31c8bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionSet:
+    actionSetPath: /actions/DigiLab4U
+  forSources: 0
+  disableAllOtherActionSets: 0
+  activateOnStart: 1
+  deactivateOnDestroy: 1
+--- !u!114 &8419824801223171222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326008480132225643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee6d53f8a3df5c45855859321208b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openMenu:
+    actionPath: /actions/DigiLab4U/in/OpenMenu
+    needsReinit: 0
+  handType: 0
+  laserPointer: {fileID: 8954367655918894744}
+  cameraTransform: {fileID: 1805448248033439128}
+  pauseMenuUI: {fileID: 8256722625115783738}
 --- !u!1 &6935081704245439894
 GameObject:
   m_ObjectHideFlags: 0

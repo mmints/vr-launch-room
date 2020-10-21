@@ -19,7 +19,6 @@ public class PauseMenuHandler : MonoBehaviour
     // Controller options
     public SteamVR_Action_Boolean openMenu;   // SteamVR Controller Action
     public SteamVR_Input_Sources handType;    // The Hand (Controller) that should trigger the Action
-    // TODO: Implement the appearance and disappearance of the laser pointer
     public SteamVR_LaserPointer laserPointer; // The Hand (Controller) that has the SteamVR_LaserPointer.cs Script
     
     public Transform cameraTransform;  // World Space Position of the Players Head to Calculate the View Direction
