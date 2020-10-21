@@ -3532,6 +3532,7 @@ GameObject:
   - component: {fileID: 4332694434083547740}
   - component: {fileID: 4020828887139840141}
   - component: {fileID: 8419824801223171222}
+  - component: {fileID: 616548008635404243}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -3653,6 +3654,19 @@ MonoBehaviour:
   laserPointer: {fileID: 8954367655918894744}
   cameraTransform: {fileID: 1805448248033439128}
   pauseMenuUI: {fileID: 8256722625115783738}
+--- !u!114 &616548008635404243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326008480132225643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600f888d3ef7ed34cbe9289361932032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPointer: {fileID: 8954367655918894744}
 --- !u!1 &6935081704245439894
 GameObject:
   m_ObjectHideFlags: 0

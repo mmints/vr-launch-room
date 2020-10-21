@@ -10,14 +10,34 @@ public class EventSystem : MonoBehaviour
         current = this;
     }
 
-    public event Action<string> loadLevel;
-
+    public event Action<string> onLoadLevel;
+    public event Action onEnterTableArea;
+    public event Action onExitTableArea;
+    
     public void LoadLevel(string levelName)
     {
-        if (loadLevel != null)
+        if (onLoadLevel != null)
         {
-            loadLevel(levelName);
+            onLoadLevel(levelName);
             Debug.Log("EventSystem: Button was Triggered!");
+        }
+    }
+    
+    public void OnEnterTableArea()
+    {
+        if (onEnterTableArea != null)
+        {
+            onEnterTableArea();
+            Debug.Log("EventSystem: Player ENTERS the table area!");
+        }
+    }
+
+    public void OnExitTableArea()
+    {
+        if (onExitTableArea != null)
+        {
+            onExitTableArea();
+            Debug.Log("EventSystem: Player EXITS the table area!");
         }
     }
 }
