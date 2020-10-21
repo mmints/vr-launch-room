@@ -90,7 +90,8 @@ public class PauseMenuHandler : MonoBehaviour
         var position = cameraTransform.position + (cameraTransform.forward * distance);
         position = new Vector3(position.x, cameraTransform.transform.position.y + height, position.z);
         pauseMenuUI.transform.position = position;
-        
+
+        laserPointer.active = true;
         pauseMenuUI.SetActive(true);
         gameIsPaused = true;
     }
@@ -98,6 +99,7 @@ public class PauseMenuHandler : MonoBehaviour
     // Close the Pause Menu and get back to the game.
     void Resume()
     {
+        laserPointer.active = false;
         pauseMenuUI.SetActive(false);
         gameIsPaused = false;
     }

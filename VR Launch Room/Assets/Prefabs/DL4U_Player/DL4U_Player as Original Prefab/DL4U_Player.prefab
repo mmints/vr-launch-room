@@ -1669,7 +1669,7 @@ MonoBehaviour:
     actionPath: /actions/DigiLab4U/in/OpenMenu
     needsReinit: 0
   handType: 0
-  laserPointer: {fileID: 3845573084532158096}
+  laserPointer: {fileID: 8954367655918894744}
   cameraTransform: {fileID: 1805448248033439128}
   pauseMenuUI: {fileID: 8256722625115783738}
 --- !u!1 &1805448248033626680
@@ -2328,7 +2328,7 @@ GameObject:
   - component: {fileID: 1805448248040167180}
   - component: {fileID: 1773081202039429710}
   - component: {fileID: 1773081223352115014}
-  - component: {fileID: 3845573084532158096}
+  - component: {fileID: 8954367655918894744}
   m_Layer: 26
   m_Name: RightHand
   m_TagString: Untagged
@@ -2458,7 +2458,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967039
   hand: {fileID: 0}
---- !u!114 &3845573084532158096
+--- !u!114 &8954367655918894744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   interactWithUI:
     actionPath: /actions/default/in/InteractUI
     needsReinit: 0
-  active: 1
+  active: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   thickness: 0.002
   clickColor: {r: 0, g: 1, b: 0, a: 1}
