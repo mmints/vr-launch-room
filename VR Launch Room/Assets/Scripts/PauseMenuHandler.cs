@@ -23,6 +23,8 @@ public class PauseMenuHandler : MonoBehaviour
     
     public Transform cameraTransform;  // World Space Position of the Players Head to Calculate the View Direction
     public GameObject pauseMenuUI;     // Game object, that contains a canvas with the GUI elements
+
+    private string mainScene = "Main"; // The main controlling scene (Launch Room)
     
     // TODO: Turn gameIsPaused to public to use it outside as trigger for pause functions
     private bool gameIsPaused = false; // Indicates if the menu is currently open or not
@@ -30,7 +32,7 @@ public class PauseMenuHandler : MonoBehaviour
     // TODO: Change for now hard coded names to dynamic public variables
     private string scene1 = "Scene1";
     private string scene2 = "Scene2";
-    
+
     void Awake()
     {
         openMenu.AddOnStateDownListener(OnMenuButton, handType);
@@ -67,7 +69,12 @@ public class PauseMenuHandler : MonoBehaviour
     // Use the laserPointer and the Trigger of the controller to enable the transition
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.name == scene1)
+        if (e.target.name == mainScene)
+        {
+            Debug.Log("Scene1 was clicked");
+            EventSystem.current.OnLoadLevel(mainScene);
+        }
+        else if (e.target.name == scene1)
         {
             Debug.Log("Scene1 was clicked");
             EventSystem.current.OnLoadLevel(scene1);
