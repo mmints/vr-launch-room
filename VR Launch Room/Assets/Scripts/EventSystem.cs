@@ -1,6 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
+/*
+ * This script handles the internal event system of this application.
+ *
+ * Current Actions:
+ * OnLoadLevel      - Triggers, if a level loading request appears
+ * OnEnterTableArea - Triggers, if something (player) enters the area around the controller table
+ * OnExitTableArea - Triggers, if something (player) exits the area around the controller table
+ */
+
 public class EventSystem : MonoBehaviour
 {
     public static EventSystem current; // Current Event
@@ -14,7 +23,7 @@ public class EventSystem : MonoBehaviour
     public event Action onEnterTableArea;
     public event Action onExitTableArea;
     
-    public void LoadLevel(string levelName)
+    public void OnLoadLevel(string levelName)
     {
         if (onLoadLevel != null)
         {

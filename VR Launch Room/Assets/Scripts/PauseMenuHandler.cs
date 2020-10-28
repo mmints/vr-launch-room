@@ -70,12 +70,12 @@ public class PauseMenuHandler : MonoBehaviour
         if (e.target.name == scene1)
         {
             Debug.Log("Scene1 was clicked");
-            EventSystem.current.LoadLevel(scene1);
+            EventSystem.current.OnLoadLevel(scene1);
         }
         else if (e.target.name == scene2)
         {
             Debug.Log("Scene2 was clicked");
-            EventSystem.current.LoadLevel(scene2);
+            EventSystem.current.OnLoadLevel(scene2);
         }
     }
     
