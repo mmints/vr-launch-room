@@ -18,7 +18,7 @@ public class SceneLoaderVR : MonoBehaviour
     private SteamVR_LoadLevel steamVRLoadLevel;
     void Start()
     {
-        EventSystem.current.loadLevel += this.LoadLevel;
+        EventSystem.current.onLoadLevel += this.LoadLevel;
     }
 
     private void LoadLevel(string levelName)

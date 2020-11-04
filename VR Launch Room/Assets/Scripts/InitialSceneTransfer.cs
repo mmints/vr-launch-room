@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
+/*
+ * Transfers the player from the initial scene to the main scene.
+ */
+
 public class InitialSceneTransfer : MonoBehaviour
 {
     public float activationTime;
