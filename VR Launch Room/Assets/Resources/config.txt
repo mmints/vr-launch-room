@@ -1,0 +1,3 @@
+[Moodle]
+url=https://odl4u.ko-ld.de/moodle/
+serviceName=arvr-digilab
