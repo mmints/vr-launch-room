@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ec1bf8ff57c8e409ae06a5f2cf2d8e, type: 3}
+  m_Name: red
+  m_EditorClassIdentifier: 
+  name: Red
+  version: 0
+  pathToScene: red.unity
+  screenShot: {fileID: 2800000, guid: 7053cbb9246685940aba6d1a6161e72f, type: 3}
