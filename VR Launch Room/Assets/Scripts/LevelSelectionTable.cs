@@ -9,7 +9,7 @@ public class LevelSelectionTable : MonoBehaviour
 {
     // Member Variables
     private User _user;
-    private Level _level;
+    private List<Level> _levels; // Use this for caching the levels
     private AssetBundle _assetBundle;
     public NetworkManager _NetworkManager; // Communication to odl4u.ko-ld.de
     
@@ -30,6 +30,10 @@ public class LevelSelectionTable : MonoBehaviour
         _currentIdx = 0;
         _maxIdx = _user.levelNames.Count - 1;
         Debug.Log("INDEX - current: " + _currentIdx + ", max: " + _maxIdx);
+        
+        Debug.Log("Filling up levels.");
+        _levels = new List<Level>();
+        StartCoroutine(GetLevels());
     }
     
     // Interface to interact with the menu by the Level Select Controller
@@ -46,7 +50,7 @@ public class LevelSelectionTable : MonoBehaviour
     }
     
     
-    // Use Buttons or other trigger to scroll through the Levels by using this functions
+    // Use Buttons or other trigger to brows through the Levels by using this functions
     public void ShowNextLevel()
     {
         // If the current Index is the max Index then start over from 0
@@ -55,7 +59,9 @@ public class LevelSelectionTable : MonoBehaviour
         else
             _currentIdx = 0;
 
-        StartCoroutine(DisplayLevel(_user.levelNames[_currentIdx]));
+        thumbnail.texture = _levels[_currentIdx].GetImage();
+        levelTitle.text = _levels[_currentIdx].displayName;
+
     }
 
     public void ShowPreviousLevel()
@@ -66,27 +72,26 @@ public class LevelSelectionTable : MonoBehaviour
         else
             _currentIdx = _maxIdx;
 
-        StartCoroutine(DisplayLevel(_user.levelNames[_currentIdx]));
+        thumbnail.texture = _levels[_currentIdx].GetImage();
+        levelTitle.text = _levels[_currentIdx].displayName;
     }
     
-    // Co-Routine to send a GET request to the server and display the title and thumbnail of the selected scene.
-    private IEnumerator DisplayLevel(string levelName)
+    // Send GET requests for all levels that are available for the user
+    private IEnumerator GetLevels()
     {
-        yield return GetLevel(levelName);
+        levelTitle.text = "Connecting..."; // Display on the GUI that the request is going on
         
-        thumbnail.texture = _level.GetImage();
-        Debug.Log("Thumbnail is set.");
-        
-        levelTitle.text = _level.displayName;
-        Debug.Log("Title is set.");
-    }
-    
-    // GET request Co-Routine to get the Level Object from the server
-    private IEnumerator GetLevel(string levelName)
-    {
-        Debug.Log("Requesting Level");
-        yield return _NetworkManager.GetLevelRequest(levelName);
+        Debug.Log("Get all Levels.");
+        foreach (var levelName in _user.levelNames)
+        {
+            yield return _NetworkManager.GetLevelRequest(levelName);
+            _levels.Add(_NetworkManager.GetLevel());   
+        }
         Debug.Log("Done!");
-        _level = _NetworkManager.GetLevel();
+        Debug.Log("Level Count: " + _levels.Count);
+        
+        // When done, display the first level on the screen
+        thumbnail.texture = _levels[_currentIdx].GetImage();
+        levelTitle.text = _levels[_currentIdx].displayName;
     }
 }
