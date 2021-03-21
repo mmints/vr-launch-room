@@ -22,7 +22,6 @@ public class Level
         string[] subs = level.thumbnailBase64.Split(',');
         this.thumbnailBase64 = subs[1];
     }
-
     
     // Returns the encoded thumbnail image as a Texture2D.
     // This is used to display the image on RawImage Object on a GUI Canvas.

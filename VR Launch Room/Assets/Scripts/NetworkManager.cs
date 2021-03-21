@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 // Level information and the corresponding AssetBundles are
 // downloaded and made available to the rest of the software.
 
-public class NetworkManager : MonoBehaviour
+public class NetworkManager
 {
     // Address to odl4u.ko-ld.de.
     private string _url = "http://141.26.140.219:666/";
