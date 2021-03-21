@@ -4,6 +4,7 @@
 /**/Assets/Plugins/**
 /**/Assets/TextMesh\ Pro**
 /**/Assets/SteamVR/
+/**/Assets/SteamVR_Resources/
 /**/Assets/kitchen_creation_kit/
 /**/Assets/20 Ground*/
 /**/Assets/Hand Painted*/
@@ -27,6 +28,7 @@ Plugins.meta
 ## SteamVR meta files
 SteamVR.meta
 SteamVR_Input.meta
+SteamVR_Resources.meta
 kitchen_creation_kit.meta
 20 Ground Material Sets MAN MADE.meta
 Hand Painted Stone Texture.meta
