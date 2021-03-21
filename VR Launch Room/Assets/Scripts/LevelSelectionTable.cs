@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // This script is attached to the LevelSelectionTable.
@@ -27,13 +28,14 @@ public class LevelSelectionTable : MonoBehaviour
         _user = new User("Assets/Moodle/user.json");
         _NetworkManager = new NetworkManager();
         
+        // Init the Idx for browsing through the available levels
         _currentIdx = 0;
         _maxIdx = _user.levelNames.Count - 1;
         Debug.Log("INDEX - current: " + _currentIdx + ", max: " + _maxIdx);
         
         Debug.Log("Filling up levels.");
         _levels = new List<Level>();
-        StartCoroutine(GetLevels());
+        StartCoroutine(GetLevels()); // fill _levels List in Co-Routine
     }
     
     // Interface to interact with the menu by the Level Select Controller
@@ -49,6 +51,11 @@ public class LevelSelectionTable : MonoBehaviour
         ShowNextLevel();
     }
     
+    public void LoadButtonClicked()
+    {
+        Debug.Log("Load Button Clicked!");
+        StartCoroutine(LoadLevel()); // Wait until finished and then load the selected level
+    }
     
     // Use Buttons or other trigger to brows through the Levels by using this functions
     public void ShowNextLevel()
@@ -61,7 +68,6 @@ public class LevelSelectionTable : MonoBehaviour
 
         thumbnail.texture = _levels[_currentIdx].GetImage();
         levelTitle.text = _levels[_currentIdx].displayName;
-
     }
 
     public void ShowPreviousLevel()
@@ -74,6 +80,33 @@ public class LevelSelectionTable : MonoBehaviour
 
         thumbnail.texture = _levels[_currentIdx].GetImage();
         levelTitle.text = _levels[_currentIdx].displayName;
+    }
+    
+    private IEnumerator LoadLevel() // Will be called by ButtonDown function of the top game object
+    {
+        levelTitle.text = "Loading: " + _levels[_currentIdx].name;
+        yield return GetAssetBundle(); // Download or load from cache
+        
+        // Get the name of the first Scene like organized in the Building Setting from the
+        // AssetBundle's origin Project. Hence, it is the starting Scene.
+        string startSceneName = _assetBundle.GetAllScenePaths()[0];
+        Debug.Log("Start Scene: " + startSceneName);
+        
+        SceneManager.LoadScene(startSceneName);
+        var scene = SceneManager.GetSceneByName(startSceneName);
+        Debug.Log("Load scene: " + scene.name);
+        
+        _assetBundle.Unload(true); // Unloads an AssetBundle freeing its data.
+        // In either case you won't be able to load any more objects from this bundle unless it is reloaded.
+    }
+    
+    // Send GET requests to download the selected level
+    private IEnumerator GetAssetBundle()
+    {
+        Debug.Log("Requesting Asset Bundle");
+        yield return _NetworkManager.GetAssetBundleRequest(_levels[_currentIdx].name);
+        Debug.Log("Done!");
+        _assetBundle = _NetworkManager.GetAssetBundle();
     }
     
     // Send GET requests for all levels that are available for the user
