@@ -9,7 +9,7 @@
 /**/Assets/20 Ground*/
 /**/Assets/Hand Painted*/
 /**/Assets/Standard Assets*/
-
+/**/Assets/XR/
 
 ## Directories
 [Ll]ibrary/
@@ -34,6 +34,7 @@ kitchen_creation_kit.meta
 Hand Painted Stone Texture.meta
 Standard Assets (Mobile).meta
 unityProject.vrmanifest
+/**/Assets/XR.meta
 
 ## Generated meta files
 *.pidb.meta
