@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Valve.VR;
 
 // This script is attached to the LevelSelectionTable.
 // It manages the downloading, presenting and launching of available Levels. 
@@ -12,7 +13,7 @@ public class LevelSelectionTable : MonoBehaviour
     private User _user;
     private List<Level> _levels; // Use this for caching the levels
     private AssetBundle _assetBundle;
-    public NetworkManager _NetworkManager; // Communication to odl4u.ko-ld.de
+    private NetworkManager _NetworkManager; // Communication to odl4u.ko-ld.de
     
     // For iteration trough the level
     private int _currentIdx;
@@ -27,7 +28,7 @@ public class LevelSelectionTable : MonoBehaviour
         // Initialization
         _user = new User("Assets/Moodle/user.json");
         _NetworkManager = new NetworkManager();
-        
+
         // Init the Idx for browsing through the available levels
         _currentIdx = 0;
         _maxIdx = _user.levelNames.Count - 1;
@@ -89,13 +90,13 @@ public class LevelSelectionTable : MonoBehaviour
         
         // Get the name of the first Scene like organized in the Building Setting from the
         // AssetBundle's origin Project. Hence, it is the starting Scene.
-        string startSceneName = _assetBundle.GetAllScenePaths()[0];
-        Debug.Log("Start Scene: " + startSceneName);
+        string startScenePath = _assetBundle.GetAllScenePaths()[0];
+        Debug.Log("Start Scene: " + startScenePath);
         
-        SceneManager.LoadScene(startSceneName);
-        var scene = SceneManager.GetSceneByName(startSceneName);
+        SceneManager.LoadScene(startScenePath);
+        var scene = SceneManager.GetSceneByName(startScenePath);
         Debug.Log("Load scene: " + scene.name);
-        
+
         _assetBundle.Unload(true); // Unloads an AssetBundle freeing its data.
         // In either case you won't be able to load any more objects from this bundle unless it is reloaded.
     }
