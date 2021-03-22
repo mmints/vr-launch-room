@@ -11,6 +11,10 @@
 /**/Assets/Standard Assets*/
 /**/Assets/XR/
 
+## Asset Bundle Build Directory
+/**/Assets/AssetBundles/
+/**/Assets/AssetBundles.meta
+
 ## Directories
 [Ll]ibrary/
 [Tt]emp/
