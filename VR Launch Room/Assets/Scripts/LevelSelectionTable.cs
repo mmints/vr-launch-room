@@ -26,7 +26,11 @@ public class LevelSelectionTable : MonoBehaviour
     void Start()
     {
         // Initialization
-        _user = new User("Assets/Moodle/user.json");
+        _user = new User("Assets/Moodle/user.json"); // TODO: This only works in the Editor!
+        // For Build: 
+        // Add a json file with the user credentials right in the directory of the .exe
+        // Adjust the path to "user.json"
+        
         _NetworkManager = new NetworkManager();
 
         // Init the Idx for browsing through the available levels

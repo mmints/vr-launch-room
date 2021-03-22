@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEngine;
 
+[Serializable]
 public class Level
 {
     public string name;
@@ -9,6 +10,15 @@ public class Level
     public string assetBundleURL;
     public string thumbnailBase64;
 
+    // Constructor, used to serialize Level
+    public Level(string name, string displayName, string pathToThumbnailBase64)
+    {
+        this.name = name;
+        this.displayName = displayName;
+        this.assetBundleURL = ""; // Redundant
+        this.thumbnailBase64 =  File.ReadAllText(pathToThumbnailBase64);
+    }
+    
     // Constructor that deserialize a json to a Level object
     public Level(string json)
     {
@@ -16,8 +26,11 @@ public class Level
 
         this.name = level.name;
         this.displayName = level.displayName;
-        this.assetBundleURL = level.assetBundleURL;
-        
+        this.assetBundleURL = level.assetBundleURL; // TODO: Redundant -> Remove Attribute?
+                                                    // Attention:
+                                                    // Currently some Level contain this field
+                                                    // hence, there will be an error in deserialization
+                                                    
         // Remove redundant data information from base64 encodeing before the ',' -> data:image/png;base64
         string[] subs = level.thumbnailBase64.Split(',');
         this.thumbnailBase64 = subs[1];
