@@ -7,6 +7,8 @@ using Valve.VR.Extras;
 
 /*
  * This script handles the appearance of the pause menu.
+ * Moreover it handles the state machine of the appearance
+ * of the dialogue windows.
  */
 
 public class PauseMenuHandler : MonoBehaviour
@@ -17,14 +19,17 @@ public class PauseMenuHandler : MonoBehaviour
     private float distance = 1.25f;
     
     // Button Names
-    private string _mainScene = "Main"; // The main controlling scene (Launch Room)
-    private string _resume = "Resume"; // Close the Pause Menu on Button click
+    private string _mainButtonName = "Main"; // The main controlling scene (Launch Room)
+    private string _resumeButtonName = "Resume"; // Close the Pause Menu on Button click
+    private string _exitButtonName = "Exit"; // Close the Pause Menu on Button click
+    
     
     // Controller options
-    public SteamVR_Action_Boolean openMenu;   // SteamVR Controller Action
+    public SteamVR_Action_Boolean openMenu;   // SteamVR Controller Action -> Open Menu on Hardware Button
     public SteamVR_Input_Sources handType;    // The Hand (Controller) that should trigger the Action
     public SteamVR_LaserPointer laserPointer; // The Hand (Controller) that has the SteamVR_LaserPointer.cs Script
     
+    // Transformation of the Menu Canvas in world
     public Transform cameraTransform;  // World Space Position of the Players Head to Calculate the View Direction
     public GameObject pauseMenuUI;     // Game object, that contains a canvas with the GUI elements
 
@@ -51,25 +56,33 @@ public class PauseMenuHandler : MonoBehaviour
     // Trigger Function -> Called when the laser pointer targets a valid object
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.name == _mainScene)
+        // Main Pause Menu Targets
+        if (e.target.name == _mainButtonName)
         {
             Debug.Log("Main Scene was clicked");
-            LoadLevel(_mainScene);
-            // Make sure that the menu is closed when getting into a new scene
-            Resume();
+            BackToMain();
+            Resume(); // Make sure that the menu is closed when getting into a new scene
         }
-        if (e.target.name == _resume)
+        if (e.target.name == _resumeButtonName)
         {
             Debug.Log("Resume was clicked");
-            // Make sure that the menu is closed when getting into a new scene
             Resume();
         }
+        if (e.target.name == _exitButtonName)
+        {
+            Debug.Log("Exit was clicked");
+            Exit();
+        }
+        
+        // Dialogue Menu Targets
+        // TODO: Add dialogue targets   
     }
     
     // Opens a pause menu at a fixed position in the world relatively to the head/camera position
     // Works just like the ingame menu in SteamVR Home
     void Pause()
     {
+        // Place the menu right in front of the user
         pauseMenuUI.transform.localEulerAngles = new Vector3(tilt, cameraTransform.localEulerAngles.y, 0f);
 
         // Move the menu to the position of the player and transform it in front of it
@@ -77,12 +90,18 @@ public class PauseMenuHandler : MonoBehaviour
         position = new Vector3(position.x, cameraTransform.transform.position.y + height, position.z);
         pauseMenuUI.transform.position = position;
 
+        // Activates UI elements
         laserPointer.active = true;
         pauseMenuUI.SetActive(true);
         gameIsPaused = true;
     }
+
+    // Opens the Dialogue Window
+    void Dialogue(string windowName)
+    {
+        // TODO: Implement Dialogue Logic
+    }
     
-    // Close the Pause Menu and get back to the game.
     void Resume()
     {
         laserPointer.active = false;
@@ -91,9 +110,26 @@ public class PauseMenuHandler : MonoBehaviour
     }
     
     // Transfers the player to the selected scene
-    private void LoadLevel(string levelName)
+    private void BackToMain()
     {
-        Debug.Log("SceneLoaderVR: Load Level:" + levelName);
-        SteamVR_LoadLevel.Begin(levelName, showGrid:true);
+        // TODO: Open Dialogue
+        // 1. Close the Main Pause menu and open Dialogue
+        // 2. If True: Load Main Level
+        // 3. If False: Close Dialogue and reopen Main Pause Menu
+        
+        Debug.Log("SceneLoaderVR: Load Level: Main");
+        SteamVR_LoadLevel.Begin("Main", showGrid:true);
+    }
+    
+    // Close the Pause Menu and get back to the game.
+    
+    void Exit()
+    {
+        // TODO: Open Dialogue
+        // 1. Close the Main Pause menu and open Dialogue
+        // 2. If True: Exit the game
+        // 3. If False: Close Dialogue and reopen Main Pause Menu
+        
+        // TODO: Exit the game
     }
 }
