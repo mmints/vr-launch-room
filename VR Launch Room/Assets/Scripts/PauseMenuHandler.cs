@@ -19,10 +19,11 @@ public class PauseMenuHandler : MonoBehaviour
     private float distance = 1.25f;
     
     // Button Names
-    private string _mainButtonName = "Main"; // The main controlling scene (Launch Room)
-    private string _resumeButtonName = "Resume"; // Close the Pause Menu on Button click
-    private string _exitButtonName = "Exit"; // Close the Pause Menu on Button click
+    private const string _mainButtonName = "Main"; // The main controlling scene (Launch Room)
+    private const string _resumeButtonName = "Resume"; // Close the Pause Menu on Button click
+    private const string _exitButtonName = "Exit"; // Close the Pause Menu on Button click
     
+    // TODO: Add Dialogue Buttons
     
     // Controller options
     public SteamVR_Action_Boolean openMenu;   // SteamVR Controller Action -> Open Menu on Hardware Button
@@ -56,26 +57,29 @@ public class PauseMenuHandler : MonoBehaviour
     // Trigger Function -> Called when the laser pointer targets a valid object
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        // Main Pause Menu Targets
-        if (e.target.name == _mainButtonName)
+
+        switch (e.target.name)
         {
-            Debug.Log("Main Scene was clicked");
-            BackToMain();
-            Resume(); // Make sure that the menu is closed when getting into a new scene
+            case _mainButtonName:
+                Debug.Log("Main Scene was clicked");
+                BackToMain();
+                Resume(); // Make sure that the menu is closed when getting into a new scene
+                break;
+            
+            case _resumeButtonName:
+                Debug.Log("Resume was clicked");
+                Resume();
+                break;
+                
+            case _exitButtonName:
+                Debug.Log("Exit was clicked");
+                Exit();
+                break;
+            
+            // Dialogue Menu Targets
+            // TODO: Add dialogue targets   
+
         }
-        if (e.target.name == _resumeButtonName)
-        {
-            Debug.Log("Resume was clicked");
-            Resume();
-        }
-        if (e.target.name == _exitButtonName)
-        {
-            Debug.Log("Exit was clicked");
-            Exit();
-        }
-        
-        // Dialogue Menu Targets
-        // TODO: Add dialogue targets   
     }
     
     // Opens a pause menu at a fixed position in the world relatively to the head/camera position
