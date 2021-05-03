@@ -22,8 +22,13 @@ public class PauseMenuHandler : MonoBehaviour
     private const string _mainButtonName = "Main"; // The main controlling scene (Launch Room)
     private const string _resumeButtonName = "Resume"; // Close the Pause Menu on Button click
     private const string _exitButtonName = "Exit"; // Close the Pause Menu on Button click
+
+    private const string _yesButtonName = "Yes";
+    private const string _noButtonName = "No";
     
-    // TODO: Add Dialogue Buttons
+    // Dialogue Window Names
+    private const string _backToMain = "BackToMain";
+    private const string _exitTheGame = "ExitTheGame";
     
     // Controller options
     public SteamVR_Action_Boolean openMenu;   // SteamVR Controller Action -> Open Menu on Hardware Button
@@ -34,6 +39,11 @@ public class PauseMenuHandler : MonoBehaviour
     public Transform cameraTransform;  // World Space Position of the Players Head to Calculate the View Direction
     public GameObject pauseMenuUI;     // Game object, that contains a canvas with the GUI elements
 
+    // Dialogue Windows
+    public GameObject backToMainMenuUI;
+    public GameObject exitTheGameMenuUI; 
+
+    
     // TODO: Turn gameIsPaused to public to use it outside as trigger for pause functions
     private bool gameIsPaused = false; // Indicates if the menu is currently open or not
     
@@ -62,8 +72,7 @@ public class PauseMenuHandler : MonoBehaviour
         {
             case _mainButtonName:
                 Debug.Log("Main Scene was clicked");
-                BackToMain();
-                Resume(); // Make sure that the menu is closed when getting into a new scene
+                Dialogue(_backToMain);
                 break;
             
             case _resumeButtonName:
@@ -73,67 +82,95 @@ public class PauseMenuHandler : MonoBehaviour
                 
             case _exitButtonName:
                 Debug.Log("Exit was clicked");
-                Exit();
+                Dialogue(_exitTheGame);
                 break;
             
             // Dialogue Menu Targets
-            // TODO: Add dialogue targets   
+            case _yesButtonName:
+                Debug.Log("Yes was clicked");
+                if (backToMainMenuUI.activeSelf)
+                    BackToMain();
+                else if (exitTheGameMenuUI.activeSelf)
+                    Exit();
+                break;
 
+            case _noButtonName:
+                Debug.Log("No was clicked");
+                backToMainMenuUI.SetActive(false);
+                exitTheGameMenuUI.SetActive(false);
+                pauseMenuUI.SetActive(true);
+                break;
         }
     }
+    
+    // Opens the Dialogue Window
+    // 
+    void Dialogue(string windowName)
+    {
+        // Disable the Main Pause Menu
+        pauseMenuUI.SetActive(false);
+        
+        switch (windowName)
+        {
+            case _backToMain:
+                backToMainMenuUI.SetActive(true);
+                TransformMenuInFromOfTheUser(backToMainMenuUI);
+                break;
+            
+            case _exitTheGame:
+                exitTheGameMenuUI.SetActive(true);
+                TransformMenuInFromOfTheUser(exitTheGameMenuUI);
+                exitTheGameMenuUI.transform.localEulerAngles = new Vector3(tilt, cameraTransform.localEulerAngles.y, 0f);
+                break;
+        }
+    }
+
     
     // Opens a pause menu at a fixed position in the world relatively to the head/camera position
     // Works just like the ingame menu in SteamVR Home
     void Pause()
     {
-        // Place the menu right in front of the user
-        pauseMenuUI.transform.localEulerAngles = new Vector3(tilt, cameraTransform.localEulerAngles.y, 0f);
-
-        // Move the menu to the position of the player and transform it in front of it
-        var position = cameraTransform.position + (cameraTransform.forward * distance);
-        position = new Vector3(position.x, cameraTransform.transform.position.y + height, position.z);
-        pauseMenuUI.transform.position = position;
+        TransformMenuInFromOfTheUser(pauseMenuUI);
 
         // Activates UI elements
         laserPointer.active = true;
         pauseMenuUI.SetActive(true);
         gameIsPaused = true;
     }
-
-    // Opens the Dialogue Window
-    void Dialogue(string windowName)
-    {
-        // TODO: Implement Dialogue Logic
-    }
     
     void Resume()
     {
         laserPointer.active = false;
+        
+        // Close all windows in case that there might one of them still open
         pauseMenuUI.SetActive(false);
+        backToMainMenuUI.SetActive(false);
+        exitTheGameMenuUI.SetActive(false);
         gameIsPaused = false;
     }
     
     // Transfers the player to the selected scene
     private void BackToMain()
     {
-        // TODO: Open Dialogue
-        // 1. Close the Main Pause menu and open Dialogue
-        // 2. If True: Load Main Level
-        // 3. If False: Close Dialogue and reopen Main Pause Menu
-        
         Debug.Log("SceneLoaderVR: Load Level: Main");
         SteamVR_LoadLevel.Begin("Main", showGrid:true);
+        Resume(); // Make sure that the menu is closed when getting into a new scene
     }
     
-    // Close the Pause Menu and get back to the game.
-    
-    void Exit()
+    private void Exit()
     {
-        // TODO: Open Dialogue
-        // 1. Close the Main Pause menu and open Dialogue
-        // 2. If True: Exit the game
-        // 3. If False: Close Dialogue and reopen Main Pause Menu
-        
-        // TODO: Exit the game
+        Debug.Log("Exiting the application.");
+        Application.Quit();
+    }
+    
+    void TransformMenuInFromOfTheUser(GameObject menu)
+    {
+        // Place the menu right in front of the user
+        menu.transform.localEulerAngles = new Vector3(tilt, cameraTransform.localEulerAngles.y, 0f);
+
+        // Move the menu to the position of the player and transform it in front of it
+        var position = cameraTransform.position + (cameraTransform.forward * distance);
+        position = new Vector3(position.x, cameraTransform.transform.position.y + height, position.z);
+        menu.transform.position = position;
     }
 }

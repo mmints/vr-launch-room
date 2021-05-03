@@ -5101,6 +5101,8 @@ MonoBehaviour:
   laserPointer: {fileID: 8954367655918894744}
   cameraTransform: {fileID: 1805448248033439128}
   pauseMenuUI: {fileID: 8256722625115783738}
+  backToMainMenuUI: {fileID: 1013370321223620242}
+  exitTheGameMenuUI: {fileID: 6208489171112071848}
 --- !u!1 &7078886147080277735
 GameObject:
   m_ObjectHideFlags: 0
