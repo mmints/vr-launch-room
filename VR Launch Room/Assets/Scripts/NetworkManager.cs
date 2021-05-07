@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -57,7 +57,7 @@ public class NetworkManager
     public IEnumerator GetAssetBundleRequest(string assetBundleName)
     {
 
-        using (UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_url + "/asset-bundles/" + assetBundleName,0, 0))
+        using (UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_url + "asset-bundles/" + assetBundleName,0, 0))
         {
             // Send the request and wait for a response
             yield return request.SendWebRequest();
