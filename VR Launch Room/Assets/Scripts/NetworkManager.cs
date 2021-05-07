@@ -29,7 +29,7 @@ public class NetworkManager
 
     public IEnumerator GetLevelRequest(string levelName)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(_url + "/json/" + levelName + ".json"))
+        using (UnityWebRequest request = UnityWebRequest.Get(_url + "json/" + levelName + ".json"))
         {
             // Send the request and wait for a response
             yield return request.SendWebRequest();
@@ -57,7 +57,7 @@ public class NetworkManager
     public IEnumerator GetAssetBundleRequest(string assetBundleName)
     {
 
-        using (UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_url + "asset-bundles/" + assetBundleName,0, 0))
+        using (UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_url + "asset-bundles/" + assetBundleName))
         {
             // Send the request and wait for a response
             yield return request.SendWebRequest();
