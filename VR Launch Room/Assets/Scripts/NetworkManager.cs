@@ -57,6 +57,8 @@ public class NetworkManager
     public IEnumerator GetAssetBundleRequest(string assetBundleName)
     {
 
+        // Use Comment for Caching -> There are download fuck ups when Nils tries to download the asset bundle
+        // using (UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_url + "asset-bundles/" + assetBundleName,0, 0))
         using (UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_url + "asset-bundles/" + assetBundleName))
         {
             // Send the request and wait for a response
