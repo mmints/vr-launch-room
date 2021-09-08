@@ -12,6 +12,12 @@ public class Serialization
         // Create Levels
         // TODO: Create GUI to Serialize Selected Level
         // -> Currently: Exchange the params in this call
+        
+        /*
+         * @param name: Name of the AssetBundle/Scene
+         * @param displayName: A string that should be displayed on the selection GUI
+         * @param pathToThumbnailBase64 <- Genau das
+         */
         Level level = new Level("name", "displayName", "path");
         
         string jsonDummyScene = JsonUtility.ToJson(level);
