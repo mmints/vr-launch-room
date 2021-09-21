@@ -1,0 +1,1 @@
+Timestamp;PositionX;PositionY;PositionZ;LookX;LookY;LookZ
