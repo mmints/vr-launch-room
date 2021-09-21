@@ -88,9 +88,7 @@ namespace Moodle
 			RESTrequester restreq = new RESTrequester();
 
 			yield return restreq.MoodleRESTrequest(moodleURL.ToString(), postdata);
-			
-			print(restreq.GetResponse());
-			
+
 			var data = (JObject)JsonConvert.DeserializeObject(restreq.GetResponse());
 	
 			moodleUser.id = data["userid"].ToObject<int>();
