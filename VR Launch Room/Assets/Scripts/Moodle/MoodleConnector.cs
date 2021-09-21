@@ -119,17 +119,18 @@ namespace Moodle
 			RESTrequester restreq = new RESTrequester();
 
 			yield return restreq.MoodleRESTrequest(moodleURL.ToString(), postdata);
-			
+
 			var data = JsonConvert.DeserializeObject<List<JObject>>(restreq.GetResponse());
 
 			foreach (var course in data)
 			{
 				Course c = new Course();
-
+			
 				c.ID = course["id"].ToObject<int>();
 				c.FullName = course["fullname"].ToString();
 				c.ShortName = course["shortname"].ToString();
 				c.Summary = course["summary"].ToString();
+				
 				moodleUser.enrolledCourses.Add(c);
 			}
 		}
